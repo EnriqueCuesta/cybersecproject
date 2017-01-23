@@ -5,6 +5,7 @@
         <title>Users</title>
     </head>
     <body>
+        <h1 th:text="${userauth} + ', wellcome to administration section.'">Wellcome to administration section.</h1>
 
         <h2>Signup users:</h2>
         
@@ -25,7 +26,6 @@
                         <td th:utext="${user.name}">name</td>
                         <td th:utext="${user.address}">address</td>
                         <td><form th:action="@{/user}" th:method="delete">
-                                <input type="hidden" name="admin" id="admin" value="true"/>
                                 <input type="hidden" name="email" id="email" th:value="${user.email}"/>
                                 <input type="submit" value="Delete"/>
                             </form>
