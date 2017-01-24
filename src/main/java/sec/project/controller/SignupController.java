@@ -96,8 +96,7 @@ public class SignupController {
             
             // Execute query and retrieve the query results
             ResultSet resultSet = connection.createStatement().executeQuery("SELECT * FROM ACCOUNT WHERE USERNAME='"+username+"' and PASSWORD='"+(new Md5PasswordEncoder()).encodePassword(password, null)+"'");
-            
-            // Do something with the results -- here, we print the books
+
             if (resultSet.next()) {
                 String dbuser = resultSet.getString("username");
                 String dbhash = resultSet.getString("password");
