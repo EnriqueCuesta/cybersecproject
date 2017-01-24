@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head lang="en">
+        <meta charset="UTF-8" />
+        <title>Users</title>
+    </head>
+    <body>
+        <h1 th:text="${userauth} + ', wellcome to administration section.'">Wellcome to administration section.</h1>
+
+        <h2>Signup users:</h2>
+        
+        <div th:if="${users.empty}">
+            <h3>No users.</h3>
+        </div>
+        
+        <div th:if="${not users.empty}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Email</th><th>Name</th><th>Address</th><th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:utext="${user.email}">email</td>
+                        <td th:utext="${user.name}">name</td>
+                        <td th:utext="${user.address}">address</td>
+                        <td><form th:action="@{/user}" th:method="delete">
+                                <input type="hidden" name="email" id="email" th:value="${user.email}"/>
+                                <input type="submit" value="Delete"/>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
